@@ -1,0 +1,60 @@
+
+**** Build of configuration Debug for project MSP430F149_Mould ****
+
+"D:\\Program Files\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../src/Const_str.c'
+'Invoking: MSP430 Compiler'
+"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=16 --include_path="D:/Program Files/ti/ccsv6/ccs_base/msp430/include" --include_path="D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --advice:power=all -g --define=__MSP430F149__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal --preproc_with_compile --preproc_dependency="src/Const_str.pp" --obj_directory="src"  "../src/Const_str.c"
+'Finished building: ../src/Const_str.c'
+' '
+'Building file: ../src/System_init.c'
+'Invoking: MSP430 Compiler'
+"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=16 --include_path="D:/Program Files/ti/ccsv6/ccs_base/msp430/include" --include_path="D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --advice:power=all -g --define=__MSP430F149__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal --preproc_with_compile --preproc_dependency="src/System_init.pp" --obj_directory="src"  "../src/System_init.c"
+'Finished building: ../src/System_init.c'
+' '
+'Building file: ../src/System_running.c'
+'Invoking: MSP430 Compiler'
+"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=16 --include_path="D:/Program Files/ti/ccsv6/ccs_base/msp430/include" --include_path="D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --advice:power=all -g --define=__MSP430F149__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal --preproc_with_compile --preproc_dependency="src/System_running.pp" --obj_directory="src"  "../src/System_running.c"
+"../src/System_running.c", line 10: remark #1527-D: (ULP 2.1) Detected SW delay loop using __delay_cycles. Recommend using a timer module instead
+'Finished building: ../src/System_running.c'
+' '
+'Building file: ../src/Watchdog.c'
+'Invoking: MSP430 Compiler'
+"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=16 --include_path="D:/Program Files/ti/ccsv6/ccs_base/msp430/include" --include_path="D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --advice:power=all -g --define=__MSP430F149__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal --preproc_with_compile --preproc_dependency="src/Watchdog.pp" --obj_directory="src"  "../src/Watchdog.c"
+'Finished building: ../src/Watchdog.c'
+' '
+'Building file: ../src/interrupt.c'
+'Invoking: MSP430 Compiler'
+"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=16 --include_path="D:/Program Files/ti/ccsv6/ccs_base/msp430/include" --include_path="D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --advice:power=all -g --define=__MSP430F149__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal --preproc_with_compile --preproc_dependency="src/interrupt.pp" --obj_directory="src"  "../src/interrupt.c"
+"../src/interrupt.c", line 22: remark #1530-D: (ULP 5.1) Detected divide operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../src/interrupt.c", line 23: remark #1530-D: (ULP 5.1) Detected divide operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../src/interrupt.c", line 24: remark #1530-D: (ULP 5.1) Detected divide operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../src/interrupt.c", line 25: remark #1530-D: (ULP 5.1) Detected divide operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../src/interrupt.c", line 26: remark #1530-D: (ULP 5.1) Detected modulo operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../src/interrupt.c", line 27: remark #1538-D: (ULP 10.1) ISR Timer_A calls function LCD_write_str. Recommend moving function call away from ISR, or inlining the function, or using pragmas
+'Finished building: ../src/interrupt.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: MSP430 Compiler'
+"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=16 --include_path="D:/Program Files/ti/ccsv6/ccs_base/msp430/include" --include_path="D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --advice:power=all -g --define=__MSP430F149__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal --preproc_with_compile --preproc_dependency="src/main.pp" --obj_directory="src"  "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/system.c'
+'Invoking: MSP430 Compiler'
+"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=16 --include_path="D:/Program Files/ti/ccsv6/ccs_base/msp430/include" --include_path="D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --advice:power=all -g --define=__MSP430F149__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal --preproc_with_compile --preproc_dependency="src/system.pp" --obj_directory="src"  "../src/system.c"
+"../src/system.c", line 12: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+"../src/system.c", line 12: remark #1527-D: (ULP 2.1) Detected SW delay loop using __no_operation. Recommend using a timer module instead
+'Finished building: ../src/system.c'
+' '
+'Building target: MSP430F149_Mould.out'
+'Invoking: MSP430 Linker'
+"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=16 --advice:power=all -g --define=__MSP430F149__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal -z -m"MSP430F149_Mould.map" --heap_size=80 --stack_size=80 -i"D:/Program Files/ti/ccsv6/ccs_base/msp430/include" -i"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/lib" -i"D:/Program Files/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="MSP430F149_Mould_linkInfo.xml" --use_hw_mpy=16 --rom_model -o "MSP430F149_Mould.out" "./src/Const_str.obj" "./src/System_init.obj" "./src/System_running.obj" "./src/Watchdog.obj" "./src/interrupt.obj" "./src/lcd1602.obj" "./src/main.obj" "./src/system.obj" "../lnk_msp430f149.cmd"  -l"libc.a" 
+<Linking>
+remark #10371-D: (ULP 1.1) Detected no uses of low power mode state changing instructions
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 1 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 2 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 3 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+'Finished building target: MSP430F149_Mould.out'
+' '
+
+**** Build Finished ****

@@ -1,0 +1,15 @@
+/*
+ * Watchdog.h
+ *
+ *  Created on: 2015Äê11ÔÂ6ÈÕ
+ *      Author: ICUI4CU
+ */
+
+#ifndef SRC_WATCHDOG_H_
+#define SRC_WATCHDOG_H_
+
+
+void Watchdog_init();
+
+
+#endif /* SRC_WATCHDOG_H_ */

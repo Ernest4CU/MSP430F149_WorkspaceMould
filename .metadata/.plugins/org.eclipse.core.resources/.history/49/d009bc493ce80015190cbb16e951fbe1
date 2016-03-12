@@ -1,0 +1,14 @@
+/*
+ * Watchdog.c
+ *
+ *  Created on: 2015年11月6日
+ *      Author: ICUI4CU
+ */
+#include <msp430f149.h>
+#include "Watchdog.h"
+
+void Watchdog_init()
+{
+	WDTCTL = WDTPW + WDTHOLD;       //关闭看门狗
+}
+

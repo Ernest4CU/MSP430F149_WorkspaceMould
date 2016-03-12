@@ -1,0 +1,11 @@
+/*
+ * Const_str.c
+ *
+ *  Created on: 2016Äê1ÔÂ16ÈÕ
+ *      Author: ICUI4CU
+ */
+
+#include "type.h"
+#include  "Const_str.h"
+uint16 Frequency_cnt;
+uint8 Frequency[5];

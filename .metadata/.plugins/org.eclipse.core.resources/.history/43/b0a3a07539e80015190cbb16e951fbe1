@@ -1,0 +1,11 @@
+#include "System_init.h"
+#include "System_running.h"
+
+/*
+ * main.c
+ */
+int main(void) {
+	Frequency_init();
+	Frequency_loop();
+	return 0;
+}
