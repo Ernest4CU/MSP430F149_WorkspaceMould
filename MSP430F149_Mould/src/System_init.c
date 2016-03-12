@@ -8,11 +8,8 @@ void Sys_init()
 {
 	Watchdog_init();
 	Clock_Init();
-	Port_init();
 	LCD_init();
-
-	P6DIR=0xff;
-	P6OUT=0xff;
+	while(1);
 
 }
 

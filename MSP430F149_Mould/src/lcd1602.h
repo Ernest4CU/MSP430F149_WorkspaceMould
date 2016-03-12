@@ -7,6 +7,9 @@
 #define delay_us(x) __delay_cycles((long)(CPU_F*(double)x/1000000.0)) 
 //#define delay_ms(x) __delay_cycles((long)(CPU_F*(double)x/1000.0)) 
 
+#define LcdLine1 0
+#define LcdLine2 1
+
 //自定义数据结构，方便使用
 #define uchar unsigned char
 #define uint  unsigned int
@@ -39,7 +42,7 @@
 //*************************************************************************
 //			初始化IO口子程序
 //*************************************************************************
-void Port_init();
+void Lcd_Portinit();
 
 //***********************************************************************
 //	显示屏命令写入函数
@@ -58,12 +61,12 @@ void LCD_clear(void) ;
 //***********************************************************************
 //	显示屏字符串写入函数
 //***********************************************************************
-void LCD_write_str(unsigned char x,unsigned char y,unsigned char *s) ;
+void LCD_write_str(unsigned char row,unsigned char column,unsigned char *s) ;
 
 //***********************************************************************
 //	显示屏单字符写入函数
 //***********************************************************************
-void LCD_write_char(unsigned char x,unsigned char y,unsigned char data); 
+void LCD_write_char(unsigned char row,unsigned char column,unsigned char data);
 
 
 //***********************************************************************

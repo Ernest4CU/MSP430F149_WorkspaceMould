@@ -9,7 +9,7 @@ void delay_ms(unsigned int x)
 	while(x--)
 		for(i=800;i>0;i--);
 }
-void Port_init()
+void Lcd_Portinit()
 {
 	LCDDATSEL = 0x00;
 	LCDDATDIR = 0xFF;                   //数据口输出模式
@@ -55,16 +55,16 @@ void LCD_clear(void)
 //***********************************************************************
 //	显示屏字符串写入函数
 //***********************************************************************
-void LCD_write_str(unsigned char x,unsigned char y,unsigned char *s) 
+void LCD_write_str(unsigned char row,unsigned char column,unsigned char *s)
 {
 	
-    if (y == 0) 
+    if (row == 0)
     {
-    	LCD_write_com(0x80 + x);        //第一行显示
+    	LCD_write_com(0x80 + column);        //第一行显示
     }
     else 
     {
-    	LCD_write_com(0xC0 + x);        //第二行显示
+    	LCD_write_com(0xC0 + column);        //第二行显示
     }
     
     while (*s) 
@@ -77,19 +77,19 @@ void LCD_write_str(unsigned char x,unsigned char y,unsigned char *s)
 //***********************************************************************
 //	显示屏单字符写入函数
 //***********************************************************************
-void LCD_write_char(unsigned char x,unsigned char y,unsigned char data) 
+void LCD_write_char(unsigned char row,unsigned char column,unsigned char data)
 {
 	
-    if (y == 0) 
+    if (row == 0)
     {
-    	LCD_write_com(0x80 + x);        //第一行显示
+    	LCD_write_com(0x80 + column);        //第一行显示
     }
     else 
     {
-    	LCD_write_com(0xC0 + x);        //第二行显示
+    	LCD_write_com(0xC0 + column);        //第二行显示
     }
     
-    LCD_write_data( data);  
+    LCD_write_data(data);
 }
 
 //***********************************************************************
@@ -97,7 +97,7 @@ void LCD_write_char(unsigned char x,unsigned char y,unsigned char data)
 //***********************************************************************
 void LCD_init(void) 
 {
-    Port_init();
+	Lcd_Portinit();
     LCD_write_com(0x38);		//显示模式设置  
     delay_ms(5);
     LCD_write_com(0x08);		//显示关闭
