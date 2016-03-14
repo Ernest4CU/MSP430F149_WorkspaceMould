@@ -1,6 +1,9 @@
 #ifndef SRC_FLASH_H_
 #define SRC_FLASH_H_
 #include "type.h"
+
+
+void FlashInit();	//flash≥ı ºªØ
 void FlashErase(uint16 adr);
 uint8 FlashBusy();
 
@@ -18,4 +21,6 @@ void Flash_WriteWord(uint16 Adr,uint16 DataW);
  ***************************************************************************/
 void Flash_WriteByte(uint16 Adr,uint8 DataB);
 
+
+void FlashA_WriteByte(uint16 Adr,uint8 DataB);
 #endif /* SRC_FLASH_H_ */
