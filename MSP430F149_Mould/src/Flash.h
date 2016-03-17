@@ -19,8 +19,7 @@ void Flash_WriteWord(uint16 Adr,uint16 DataW);
  * Adr:指向编程的地址。注意：不是指针类型
  * DataB：要编程的字节
  ***************************************************************************/
-void Flash_WriteByte(uint16 Adr,uint8 DataB);
-
-
-void FlashA_WriteByte(uint16 Adr,uint8 DataB);
+void FlashAB_WriteByte(uint16 Adr,uint8 DataB);
+void Flash_WriteByte(uint8 *Adr,uint16 Data_cnt,uint16 Target_Adr);
+void Flash_PrtUnWB(uint16 Prt_Adrf,uint16 Prt_cnt,uint16 Prt_Adrr,uint16 DataCnt);// Protect Unwrite byte
 #endif /* SRC_FLASH_H_ */

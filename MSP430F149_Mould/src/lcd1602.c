@@ -1,5 +1,9 @@
-#include <msp430x14x.h>
 #include "lcd1602.h"
+
+#include <msp430x14x.h>
+
+
+
 //*************************************************************************
 //			初始化IO口子程序
 //*************************************************************************
@@ -121,3 +125,57 @@ void LCD_Desk(void)
   delay_ms(250);
 }
 
+/*************************************************************************
+ * 将8位数据在Lcd上显示
+ *************************************************************************/
+void LCD_Hex8ToAscii(uint8 Hex8_line,uint8 Hex8_adr,uint8 Hex8_val)
+{
+	uint8 temp=0x00;
+	LCD_write_char(Hex8_line,Hex8_adr,0x30);
+	LCD_write_char(Hex8_line,Hex8_adr+1,'x');
+	temp = (Hex8_val >> 4) & 0x0f;
+	if (temp < 10) {
+		LCD_write_char(Hex8_line,Hex8_adr+2,(temp | 0x30));
+	} else {
+		LCD_write_char(Hex8_line,Hex8_adr+2,(temp + 55));
+	}
+	temp = Hex8_val  & 0x0f;
+	if (temp < 10) {
+		LCD_write_char(Hex8_line,Hex8_adr+3,(temp | 0x30));
+	} else {
+		LCD_write_char(Hex8_line,Hex8_adr+3,(temp + 55));
+	}
+}
+/*************************************************************************
+ * 将16位数据在Lcd上显示
+ *************************************************************************/
+void LCD_Hex16ToAscii(uint8 Hex16_line,uint8 Hex16_adr,uint16 Hex16_val)
+{
+	uint8 temp=0x00;
+	LCD_write_char(Hex16_line,Hex16_adr,0x30);
+	LCD_write_char(Hex16_line,Hex16_adr+1,'x');
+	temp = (Hex16_val >> 12) & 0x0f;
+	if (temp < 10) {
+		LCD_write_char(Hex16_line,Hex16_adr+2,(temp | 0x30));
+	} else {
+		LCD_write_char(Hex16_line,Hex16_adr+2,(temp + 55));
+	}
+	temp = (Hex16_val >> 8) & 0x0f;
+	if (temp < 10) {
+		LCD_write_char(Hex16_line,Hex16_adr+3,(temp | 0x30));
+	} else {
+		LCD_write_char(Hex16_line,Hex16_adr+3,(temp + 55));
+	}
+	temp = (Hex16_val >> 4) & 0x0f;
+	if (temp < 10) {
+		LCD_write_char(Hex16_line,Hex16_adr+4,(temp | 0x30));
+	} else {
+		LCD_write_char(Hex16_line,Hex16_adr+4,(temp + 55));
+	}
+	temp = Hex16_val  & 0x0f;
+	if (temp < 10) {
+		LCD_write_char(Hex16_line,Hex16_adr+5,(temp | 0x30));
+	} else {
+		LCD_write_char(Hex16_line,Hex16_adr+5,(temp + 55));
+	}
+}
