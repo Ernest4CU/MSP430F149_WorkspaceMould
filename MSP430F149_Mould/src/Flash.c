@@ -6,9 +6,7 @@
  */
 
 #include "Flash.h"
-
 #include <msp430f149.h>
-
 #include "lcd1602.h"
 #include "type.h"
 
@@ -54,9 +52,15 @@ uint8 Flash_ReadByte(uint16 Adr)
 	return *(uint8 *)Adr;
 }
 
+
 /******************************************************************************
  * 向Flash中写一字节
- * Adr:需要读取位置的地址，注意：不是指针
+ * Adr:源数据存储的首地址，注意：不是指针，是地址（数组可传数组名，变量可传变量地址（&val））
+ * Data_cnt:需要写入数据的字节数
+ * Target_Adr:数据将要写入Flash的地址，尽量写在信息存储区（inf_B:0x1000-0x107f inf_A:0x1080-0x10ff）,
+ * 			0x1100-0xffff为主flash区，一般存放程序，最好不要修改
+ * 注意：需要写入的数据应全部在同一段中，如果不全在同一段中则会有部分数据写入失败。
+ * flash中的地址是采用由高到低的方式计算的，对于一个地址，基址是该段的地址的最大值，变址值地址相对于基址的差值（例如:0x107d的基址就是0x107f,变址就是2）
  ******************************************************************************/
 void Flash_WriteByte(uint8 *Adr,uint16 Data_cnt,uint16 Target_Adr)
 {
@@ -73,7 +77,7 @@ void Flash_WriteByte(uint8 *Adr,uint16 Data_cnt,uint16 Target_Adr)
 		Adr_r=(0x10ff-Target_Adr)%128;
 		//调用Flash_PrtUnWB保护不需改变的数据并且使需要改变的数据可修改。
 		Flash_PrtUnWB(Adr_f,128,Adr_r,Data_cnt);
-	}else if((Target_Adr<=0xffff)&&(Target_Adr>0x10ff)){//向主程序端插入数据，尽量不要（既最好不要想flash 0x1100到0xffff段中修改数据）
+	}else if((Target_Adr<=0xffff)&&(Target_Adr>0x10ff)){//向主程序端插入数据，尽量不要（既最好不要向flash 0x1100到0xffff段中修改数据）
 		//需要计算Adr_f和Adr_r
 		Adr_f=0xffff-((0xffff-Target_Adr)/512)*512;
 		Adr_r=(0xffff-Target_Adr)%512;
@@ -92,13 +96,6 @@ void Flash_WriteByte(uint8 *Adr,uint16 Data_cnt,uint16 Target_Adr)
 	while(FlashBusy()==1);
 	FCTL1=FWKEY;
 	FCTL3=FWKEY+LOCK;
-	/****************************
-	 * 测试代码，用lcd显示基址和变址
-	 */
-//	LCD_Hex16ToAscii(LcdLine2,0,Adr_f);
-//	LCD_Hex16ToAscii(LcdLine2,7,Adr_r);
-	LCD_Hex8ToAscii(LcdLine2,6,*(uint8 *)(Target_Adr-1));
-	LCD_Hex8ToAscii(LcdLine2,0,*(uint8 *)Target_Adr);
 }
 
 void Flash_PrtUnWB(uint16 Prt_Adrf,uint16 Prt_cnt,uint16 Prt_Adrr,uint16 DataCnt)// Protect Unwrite byte
@@ -109,7 +106,6 @@ void Flash_PrtUnWB(uint16 Prt_Adrf,uint16 Prt_cnt,uint16 Prt_Adrr,uint16 DataCnt
 	//1.保护该字段数据，将全字段数据copy到数组中
 	uint8 temp_bk[512];
 	for(i=0;i<Prt_cnt;i++){
-//		temp_bk[i]=Flash_ReadByte(0x1002);
 		temp_bk[i]=Flash_ReadByte(i+Prt_Adrf-Prt_cnt+1);
 	}
 	//2.擦除改字段
@@ -127,9 +123,4 @@ void Flash_PrtUnWB(uint16 Prt_Adrf,uint16 Prt_cnt,uint16 Prt_Adrr,uint16 DataCnt
 	while(FlashBusy()==1);
 	FCTL1=FWKEY;
 	FCTL3=FWKEY+LOCK;
-
-	for(i=0;i<Prt_cnt;i++){
-//		temp_bk[i]=Flash_ReadByte(0x1002);
-		temp_bk[i]=Flash_ReadByte(i+Prt_Adrf-Prt_cnt+1);
-	}
 }

@@ -10,46 +10,17 @@
 
 void Sys_loop()
 {
-//	uint8 temp=*(uint8 *)(FlashB_ADR+1);
-//	uint8 *p1;
-//	p1=(uint8 *)FlashA_ADR;
 	LCD_clear();
 	LCD_write_str(LcdLine1,0,"Show Num:");
-//	FlashErase(FlashB_ADR);
-//	Flash_WriteByte(FlashB_ADR,'N');
-//	Flash_WriteByte(FlashB_ADR+1,'N');
-//	P6OUT=*(uint8 *)FlashB_ADR;
-//	P6OUT=*p1;
-//	LCD_write_char(LcdLine2,6,temp);
-//	LCD_write_char(LcdLine2,8,*(uint8 *)FlashB_ADR);
-//	delay_ms(1000);
-//
-//	Flash_WriteByte(FlashB_ADR,'J');
-//	P6OUT=*(uint8 *)FlashB_ADR;
-////	P6OUT=*p1;
-//	LCD_write_char(LcdLine2,6,*(uint8 *)(FlashB_ADR+1));
-//	LCD_write_char(LcdLine2,8,*(uint8 *)FlashB_ADR);
-//	delay_ms(1000);
-//	FlashErase(FlashB_ADR);
-//	Flash_WriteByte(FlashB_ADR,'K');
-//	P6OUT=*(uint8 *)FlashB_ADR;
-////	P6OUT=*p1;
-//	LCD_write_char(LcdLine2,6,*(uint8 *)(FlashB_ADR+1));
-//	LCD_write_char(LcdLine2,8,*(uint8 *)FlashB_ADR);
-//	FlashA_WriteByte(FlashA_ADR,'A');
-//	LCD_write_char(LcdLine2,5,*(uint8 *)FlashA_ADR);
-//	delay_ms(1000);
-//	FlashA_WriteByte(FlashA_ADR,'B');
-//	LCD_write_char(LcdLine2,5,*(uint8 *)FlashA_ADR);
-//	delay_ms(1000);
-//	FlashA_WriteByte(FlashA_ADR,'C');
-//	LCD_write_char(LcdLine2,5,*(uint8 *)FlashA_ADR);
-//	delay_ms(1000);
-//	LCD_write_char(LcdLine2,6,*(uint8 *)FlashA_ADR);
-//	uint8 tem[2]={0xfe,0x58};
-	uint8 tt=0x31;
-	Flash_WriteByte(&tt,1,0x107e);
-
+//	uint8 tem[3]={0x8a,0x9b,0x7c};
+	uint8 tt=0x88;
+	Flash_WriteByte(&tt,1,0x107d);
+	/****************************
+	 * 测试代码，用lcd1602显示写入后的数据
+	 */
+	LCD_Hex8ToAscii(LcdLine2,0,*(uint8 *)0x107e);
+	LCD_Hex8ToAscii(LcdLine2,6,*(uint8 *)0x107d);
+	LCD_Hex8ToAscii(LcdLine2,12,*(uint8 *)0x107c);
 	while(1);
 }
 
