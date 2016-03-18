@@ -47,7 +47,7 @@ void Sys_loop()
 //	delay_ms(1000);
 //	LCD_write_char(LcdLine2,6,*(uint8 *)FlashA_ADR);
 //	uint8 tem[2]={0xfe,0x58};
-	uint8 tt=0x37;
+	uint8 tt=0x31;
 	Flash_WriteByte(&tt,1,0x107e);
 
 	while(1);
